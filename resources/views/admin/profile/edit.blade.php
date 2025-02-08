@@ -23,6 +23,10 @@
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2" for="gender">性別</label>
+                        <select name="gender">
+  　　　　　　　　　　　　    <option value="男性">男性</option>
+                            <option value="女性">女性</option>
+                        </select>
                         <div class="col-md-10">
                             <input type="text" class="form-control" name="gender" value="{{ $profile_form->gender }}">
                         </div>

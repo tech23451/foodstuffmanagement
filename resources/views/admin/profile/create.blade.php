@@ -22,11 +22,12 @@
                              <input type="text" class="form-control" name="name" value="{{ old('name') }}">
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label class="col-md-2">性別</label>
-                        <div class="col-md-10">
-                            <input type="text" class="form-control" name="gender" value="{{ old('gender') }}">
-                        </div>
+                    <div class="form-group">
+                        <label for="col-md-2">性別</label>
+                        <select name="gender">
+                        <option value="man"{{ old('gender') == 'man' ? ' selected' : ' '}}>男</option>
+                        <option value="woman"{{ old('gender') == 'woman' ? ' selected' : ' '}}>女</option> 
+                        </select>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-2">趣味</label>

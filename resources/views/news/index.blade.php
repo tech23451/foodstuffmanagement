@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <p class="body mx-auto">{{ Str::limit($headline->body, 650) }}</p>
+                            <p class="body mx-auto">{!! Str::limit($headline->body, 650)!!}</p>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                                     {{ Str::limit($post->title, 150) }}
                                 </div>
                                 <div class="body mt-3">
-                                    {{ Str::limit($post->body, 1500) }}
+                                    {!! Str::limit($post->body, 1500) !!}
                                 </div>
                             </div>
                             <div class="image col-md-6 text-right mt-4">
