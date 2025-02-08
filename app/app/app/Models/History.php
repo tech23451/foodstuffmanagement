@@ -5,15 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Food extends Model
+class History extends Model
 {
     use HasFactory;
-
     protected $guarded = array('id');
 
     public static $rules = array(
-        'purchase_date' => 'required',
-        'ingreduent' => 'required',
-        'expiration_date' => 'required',
+        'news_id' => 'required',
+        'edited_at' => 'required',
     );
+
 }
