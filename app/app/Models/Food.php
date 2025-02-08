@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Food extends Model
+class News extends Model
 {
     use HasFactory;
 
@@ -15,5 +15,12 @@ class Food extends Model
         'purchase_date' => 'required',
         'ingreduent' => 'required',
         'expiration_date' => 'required',
+        'registration_date' => 'required',
+        
     );
+
+    public function histories()
+    {
+        return $this->hasMany('App\Models\History');
+    }
 }

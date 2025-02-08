@@ -19,4 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\FoodController::class, 'index'])->name('home');
+
+use App\Http\Controllers\FoodController;
+Route::controller(FoodController::class)->middleware('auth')->group(function () {
+    Route::get('create', 'add')->name('food.add');
+    Route::post('create', 'create')->name('food.create');
+});
+
+

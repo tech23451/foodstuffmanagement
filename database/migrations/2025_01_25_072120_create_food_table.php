@@ -22,9 +22,6 @@ return new class extends Migration
             $table->tinyInteger('expiration_time');
             $table->string('image_path', 255)->nullable();
             $table->date('registration_date');
-            $table->tinyInteger('condition');
-            $table->dateTime('update_at');
-            $table->tinyInteger('delete');
             $table->timestamps();
         });
     }
