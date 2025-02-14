@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('purchase_date');
             $table->string('ingreduent', 30);
             $table->date('expiration_date');
-            $table->tinyInteger('expiration_time');
+            $table->tinyInteger('expiration_time')->nullable();
             $table->string('image_path', 255)->nullable();
             $table->date('registration_date');
             $table->timestamps();

@@ -25,6 +25,9 @@ use App\Http\Controllers\FoodController;
 Route::controller(FoodController::class)->middleware('auth')->group(function () {
     Route::get('create', 'add')->name('food.add');
     Route::post('create', 'create')->name('food.create');
+    Route::get('food', 'index')->name('food.index');
+    Route::get('edit', 'edit')->name('food.edit');
+    Route::post('edit', 'update')->name('food.update');
 });
 
 

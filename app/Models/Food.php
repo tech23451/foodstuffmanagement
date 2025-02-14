@@ -12,6 +12,7 @@ class Food extends Model
     protected $guarded = array('id');
 
     public static $rules = array(
+       // 'user_id' => 'required',
         'purchase_date' => 'required',
         'ingreduent' => 'required',
         'expiration_date' => 'required',
