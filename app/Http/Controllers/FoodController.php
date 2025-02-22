@@ -8,24 +8,7 @@ use App\Models\Food;
 
 class FoodController extends Controller
 {
-    public function index(Request $request)
-    {
-        $posts = Food::all();
-        
-        // // if (count($posts) > 0) {
-        //     // $headline = $posts->shift();
-        //     $headline['body'] = nl2br($headline['body']);
-        //     // $postsの残り全部、bodyに対してnl2br()を適用
-
-
-
-        // } else {
-        //     $headline = null;
-        // }
-
-        return view('food.index', ['posts' => $posts]);
-
-    }
+    
     public function add()
     {
         return view('food.create');
@@ -73,6 +56,9 @@ class FoodController extends Controller
         if (empty($food)) {
             abort(404);
         }
+        
+
+// $value = $item->start_time ? Carbon::parse($item->start_time)->format('Y-m-d\TH:i') : '';
         return view('food.edit', ['food_form' => $food]);
     }
 
@@ -90,6 +76,18 @@ class FoodController extends Controller
         $food->fill($food_form)->save();
 
         return redirect('home');
+    }
+    public function index(Request $request)
+    {
+        $cond_ingreduent = $request->cond_ingreduent;
+        if ($cond_ingreduent != null) {
+            // 検索されたら検索結果を取得する
+            $posts = Food::where('ingreduent', $cond_ingreduent)->get();
+        } else {
+            // それ以外はすべてのニュースを取得する
+            $posts = Food::all();
+        }
+        return view('food.index', ['posts' => $posts, 'cond_ingreduent' => $cond_ingreduent]);
     }
 
     }

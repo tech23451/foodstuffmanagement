@@ -15,7 +15,7 @@
                     <div class="form-group row">
                         <label class="col-md-2">食材</label>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="" value="">
+                            <input type="text" class="form-control" name="cond_ingreduent" value="{{ $cond_ingreduent}}">
                         </div>
                         <div class="col-md-2">
                             @csrf
@@ -45,10 +45,7 @@
                                     <td>{{ Str::limit($food->ingreduent, 100) }}</td>
                                     <td>{{ Str::limit($food->expiration_date, 100) }}</td>
                                     <td>{{ Str::limit($food->purchase_date, 100) }}</td>
-                                    <td></td>
-                                    <div>
-                                            <a href="{{ route('food.edit', ['id' => $food->id]) }}">編集</a>
-                                        </div>
+                                    <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">編集</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
