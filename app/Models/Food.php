@@ -12,9 +12,17 @@ class Food extends Model
     protected $guarded = array('id');
 
     public static $rules = array(
-       // 'user_id' => 'required',
-        'purchase_date' => 'required',
-        'ingreduent' => 'required',
-        'expiration_date' => 'required',
+        'purchase_date' => 'required|date',
+        'ingredient' => 'required|string|max:30',
+        'expiration_date' => 'required|date',
+        'expiration_time' => 'required|integer|min:0|max:24', // 「指定なし」(24) を許可
+        'image' => 'nullable|image|max:2048', // 画像は任意で、最大2MB
+       
+        
     );
+
+    public function histories()
+    {
+        return $this->hasMany('App\Models\History');
+    }
 }
