@@ -20,33 +20,30 @@
                             <input type="text" class="form-control" name="ingreduent" value="{{ $food_form->ingreduent }}">
                         </div>
                     </div>
-                    <form action="" method="post">
-                    @csrf
+                    
+        @csrf
+        @method('POST')
+
+    <!-- 賞味期限日付 -->
                     <div class="form-group row">
                         <label class="col-md-2" for="expiration_date">賞味期限</label>
-                    <div class="col-md-10">
-            
-                            <input type="checkbox" id="use_time" name="use_time" value="1" 
-                            {{ old('use_time', $food_form->use_time) ? 'checked' : '' }}>
-                            <label for="use_time">時刻を使用する</label>
-
-            
-                    @if(old('use_time', $food_form->use_time))
-                
-                            <input type="datetime-local" class="form-control" id="expiration_date" name="expiration_date" 
-                            value="{{ old('expiration_date', $food_form->expiration_date) }}">
-                    @else
-                
-                            <input type="date" class="form-control" id="expiration_date" name="expiration_date" 
-                            value="{{ old('expiration_date', $food_form->expiration_date) }}">
-                    @endif
+                        <div class="col-md-10">
+                            <input type="date" name="expiration_date" id="expiration_date" value="{{ old('expiration_date', $food_form->expiration_date) }}">
+                        </div>
                     </div>
+    <!-- 賞味期限時間 -->
+                    <div class="form-group row">
+                        <label class="col-md-2" for="expiration_time">賞味期限時間</label>
+                        <div class="col-md-10">
+                        <select name="expiration_time" id="expiration_time">
+                        <option value="24" {{ old('expiration_time', $food_form->expiration_time) == 24 ? 'selected' : '' }}>指定なし</option>
+                        @for ($i = 0; $i <= 23; $i++)
+                        <option value="{{ $i }}" {{ old('expiration_time', $food_form->expiration_time) == $i ? 'selected' : '' }}>{{ $i }}</option>
+                        @endfor
+                    </select>
+                        </div>
                     </div>
-
-                                        <button type="submit">送信</button>
-                    </form>
-                    
-                    </div>
+    <!-- その他の入力項目 -->
                 
                     <div class="form-group row">
                         <label class="col-md-2" for="purchase_date">購入日</label>
@@ -54,6 +51,7 @@
                         <input type="date" class="form-control" id="purchase_date" name="purchase_date" value="{{ old('purchase_date') }}">
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label class="col-md-2" for="image">画像</label>
                         <div class="col-md-10">

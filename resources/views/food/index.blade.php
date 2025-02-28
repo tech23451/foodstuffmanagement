@@ -33,6 +33,7 @@
                             <tr>
                                 <th width="10%">ID</th>
                                 <th width="20%">名前</th>
+                                <th width="10%">画像</th>
                                 <th width="20%">賞味期限</th>
                                 <th width="20%">購入日</th>
                                 <th width="20%">操作</th>
@@ -43,9 +44,11 @@
                                 <tr>
                                     <td>{{ $food->id }}</td>
                                     <td>{{ Str::limit($food->ingreduent, 100) }}</td>
+                                    <td>{{ Str::limit($food->image_path, 255) }}</td>
                                     <td>{{ Str::limit($food->expiration_date, 100) }}</td>
                                     <td>{{ Str::limit($food->purchase_date, 100) }}</td>
                                     <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">編集</a></td>
+                                    <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">使い切った</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
