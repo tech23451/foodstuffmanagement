@@ -34,9 +34,10 @@
                                 <th width="10%">ID</th>
                                 <th width="20%">名前</th>
                                 <th width="10%">画像</th>
-                                <th width="20%">賞味期限</th>
-                                <th width="20%">購入日</th>
-                                <th width="20%">操作</th>
+                                <th width="10%">賞味期限</th>
+                                <th width="10%">購入日</th>
+                                <th width="10%">操作</th>
+                                <th width="20%">状態</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,6 +55,14 @@
                                     <td>{{ Str::limit($food->expiration_date, 100) }}</td>
                                     <td>{{ Str::limit($food->purchase_date, 100) }}</td>
                                     <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">編集</a></td>
+                                    <td>
+                                        @if($food->condition == 0)
+                                                使用中
+                                        @elseif($food->condition == 1)
+                                                 使い切った
+                                        @endif
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
