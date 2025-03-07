@@ -44,11 +44,16 @@
                                 <tr>
                                     <td>{{ $food->id }}</td>
                                     <td>{{ Str::limit($food->ingreduent, 100) }}</td>
-                                    <td>{{ Str::limit($food->image_path, 255) }}</td>
+                                    <td>
+                                        @if($food->image_path)
+                                            <img src="/storage/image/{{ $food->image_path }}" style="width:auto;height:90px;">
+                                        @else
+                                            <span>未登録</span>
+                                        @endif
+                                    </td>
                                     <td>{{ Str::limit($food->expiration_date, 100) }}</td>
                                     <td>{{ Str::limit($food->purchase_date, 100) }}</td>
                                     <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">編集</a></td>
-                                    <td><a href="{{ route('food.edit', ['id' => $food->id]) }}">使い切った</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

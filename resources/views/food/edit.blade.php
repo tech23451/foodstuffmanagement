@@ -8,6 +8,7 @@
                 <h2>食材編集</h2>
                 <form action="{{ route('food.update') }}" method="post" enctype="multipart/form-data">
                     @if (count($errors) > 0)
+                    
                         <ul>
                             @foreach($errors->all() as $e)
                                 <li>{{ $e }}</li>
@@ -48,7 +49,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="purchase_date">購入日</label>
                         <div class="col-md-10">
-                        <input type="date" class="form-control" id="purchase_date" name="purchase_date" value="{{ old('purchase_date') }}">
+                        <input type="date" class="form-control" id="purchase_date" name="purchase_date" value="{{ old('purchase_date',$food_form->purchase_date) }}">
                         </div>
                     </div>
 
@@ -57,7 +58,7 @@
                         <div class="col-md-10">
                             <input type="file" class="form-control-file" name="image">
                             <div class="form-text text-info">
-                                設定中: {{ $food_form->image_path }}
+                            <img src="/storage/image/{{ $food_form->image_path }}" style="width:auto;height:180px;">
                             </div>
                             <div class="form-check">
                                 <label class="form-check-label">
@@ -66,6 +67,18 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                    <label class="col-md-2" for="">状態</label>
+    <div class="form-check form-check-inline">
+        <input type="radio" name="condition" class="form-check-input" id="condition1" value="0" {{ old ('condition', $food_form->condition) == '0' ? 'checked' : '' }}>
+        <label for="condition1" class="form-check-label">使用中</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input type="radio" name="condition" class="form-check-input" id="condition2" value="1" {{ old ('condition', $food_form->condition) == '1' ? 'checked' : '' }}>
+        <label for="condition2" class="form-check-label">使い切った</label>
+    </div>
+    </label>
+</div>
                     <div class="form-group row">
                         <div class="col-md-10">
                             <input type="hidden" name="id" value="{{ $food_form->id }}">
@@ -73,3 +86,7 @@
                             <input type="submit" class="btn btn-primary" value="更新">
                         </div>
                     </div>
+
+                <tr>
+                    <td><a href="http://127.0.0.1:8080/home">一覧に戻る</a></td>
+                </tr>

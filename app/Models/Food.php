@@ -13,10 +13,10 @@ class Food extends Model
 
     public static $rules = array(
         'purchase_date' => 'required|date',
-        'ingredient' => 'required|string|max:30',
+        'ingreduent' => 'required|string|max:30',
         'expiration_date' => 'required|date',
-        'expiration_time' => 'required|integer|min:0|max:24', // 「指定なし」(24) を許可
-        'image' => 'nullable|image|max:2048', // 画像は任意で、最大2MB
+        'expiration_time' => 'required|integer|min:0|max:24', 
+        'image' => 'nullable|image|max:2048', 
        
         
     );

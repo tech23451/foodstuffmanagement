@@ -14,7 +14,13 @@ class FoodController extends Controller
 
     public function create(Request $request)
     {
-        $this->validate($request, Food::$rules);
+        try {
+            // バリデーションを実行
+            $this->validate($request, Food::$rules);
+        } catch (ValidationException $e) {
+            // エラーの詳細を表示
+            dd($e->validator->errors());
+        }
 
         $food = new Food;
         $food_form = $request->all();
@@ -33,7 +39,7 @@ class FoodController extends Controller
         $food->user_id = 0;
         $food->expiration_time = 0; // 追加
         $food->registration_date = date('Y-m-d');
-        $food->condition = 0;
+        $food->release = 0;
         $food->update_at = date('Y-m-d H:i:s');
         $food->delete = 0;
 
@@ -56,7 +62,13 @@ class FoodController extends Controller
 
     public function update(Request $request)
     {
-        $this->validate($request, Food::$rules);
+        try {
+            // バリデーションを実行
+            $this->validate($request, Food::$rules);
+        } catch (ValidationException $e) {
+            // エラーの詳細を表示
+            dd($e->validator->errors());
+        }
 
         $food = Food::find($request->id);
         if (empty($food)) {
@@ -81,7 +93,7 @@ unset($food_form['image']);
 //$food->user_id = 0;
 //$food->expiration_time = 0; // 追加
 //$food->registration_date = date('Y-m-d');
-//$food->condition = 0;
+//$food->release = 0;
 $food->update_at = date('Y-m-d H:i:s');
 //$food->delete = 0;
         
