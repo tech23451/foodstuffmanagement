@@ -18,9 +18,10 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="title">食材</label>
                         <div class="col-md-10">
-                            <input type="text" class="form-control" name="ingreduent" value="{{ $food_form->ingreduent }}">
+                            <input type="text" name="ingreduent" value="{{ $food_form->ingreduent }}">
                         </div>
                     </div>
+                    
                     
         @csrf
         @method('POST')
@@ -49,7 +50,7 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="purchase_date">購入日</label>
                         <div class="col-md-10">
-                        <input type="date" class="form-control" id="purchase_date" name="purchase_date" value="{{ old('purchase_date',$food_form->purchase_date) }}">
+                        <input type="date" id="purchase_date" name="purchase_date" value="{{ old('purchase_date',$food_form->purchase_date) }}">
                         </div>
                     </div>
 
@@ -87,6 +88,7 @@
                         </div>
                     </div>
 
-                <tr>
-                    <td><a href="http://127.0.0.1:8080/home">一覧に戻る</a></td>
-                </tr>
+                
+                    <div><a href="{{ route('home') }}">一覧に戻る</a></div>
+                
+@endsection

@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\FoodController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\FoodController::class, 'index'])->name('home');
 
 use App\Http\Controllers\FoodController;
 Route::controller(FoodController::class)->middleware('auth')->group(function () {
